@@ -14,7 +14,7 @@ class ClaudeUsageTracker < Formula
     libexec.install Dir["*"]
     venv = libexec/"venv"
     system Formula["python@3.13"].opt_bin/"python3.13", "-m", "venv", venv
-    system venv/"bin/pip", "install", "--quiet", "rumps==0.4.0"
+    system venv/"bin/pip", "install", "--quiet", "rumps==0.4.0", "Pillow>=10.0.0"
 
     (bin/"claude-usage-tracker").write <<~SH
       #!/bin/bash
