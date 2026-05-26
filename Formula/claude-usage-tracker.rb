@@ -7,8 +7,8 @@ class ClaudeUsageTracker < Formula
   license "MIT"
   head "https://github.com/tpatrouillat/claude-usage-tracker.git", branch: "main"
 
+  depends_on :macos => :monterey
   depends_on "python@3.13"
-  depends_on :macos
 
   def install
     libexec.install Dir["*"]
@@ -29,6 +29,6 @@ class ClaudeUsageTracker < Formula
   end
 
   test do
-    assert_predicate bin/"claude-usage-tracker", :exist?
+    assert_path_exists bin/"claude-usage-tracker"
   end
 end
