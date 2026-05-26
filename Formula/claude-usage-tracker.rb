@@ -7,7 +7,7 @@ class ClaudeUsageTracker < Formula
   license "MIT"
   head "https://github.com/tpatrouillat/claude-usage-tracker.git", branch: "main"
 
-  depends_on :macos => :monterey
+  depends_on macos: :monterey
   depends_on "python@3.13"
 
   def install
