@@ -5,7 +5,7 @@
 #   bin/update-sha256.sh <formula-name> <git-tag>
 #
 # Example:
-#   bin/update-sha256.sh claude-usage-tracker v1.0.0
+#   bin/update-sha256.sh tokease v1.0.0
 set -euo pipefail
 
 if [[ $# -ne 2 ]]; then
