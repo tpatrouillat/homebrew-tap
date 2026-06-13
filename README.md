@@ -8,30 +8,30 @@ brew install tpatrouillat/tap/<formula-name>
 
 ## Formulae
 
-### `claude-usage-tracker`
+### `tokease`
 
-macOS menu bar app showing your Claude Code 5-hour, weekly, Sonnet, and Opus usage limits in real time. [Project repo →](https://github.com/tpatrouillat/claude-usage-tracker)
+macOS menu bar app showing your Claude Code 5-hour, weekly, Sonnet, and Opus usage limits in real time. [Project repo →](https://github.com/tpatrouillat/tokease)
 
 ```bash
-brew install tpatrouillat/tap/claude-usage-tracker
-claude-usage-tracker                                    # launch
-brew services start claude-usage-tracker                # auto-start at login
+brew install tpatrouillat/tap/tokease
+tokease                                    # launch
+brew services start tokease                # auto-start at login
 ```
 
 Until v1.0.0 is tagged, install from the `main` branch:
 
 ```bash
-brew install --HEAD tpatrouillat/tap/claude-usage-tracker
+brew install --HEAD tpatrouillat/tap/tokease
 ```
 
 ## Releasing a new formula version
 
-When you tag a new release in `claude-usage-tracker`:
+When you tag a new release in `tokease`:
 
 ```bash
-./bin/update-sha256.sh claude-usage-tracker v1.0.0
-git commit -am "claude-usage-tracker: v1.0.0"
+./bin/update-sha256.sh tokease v1.0.0
+git commit -am "tokease: v1.0.0"
 git push
 ```
 
-Users then get the new version with `brew upgrade claude-usage-tracker`.
+Users then get the new version with `brew upgrade tokease`.
