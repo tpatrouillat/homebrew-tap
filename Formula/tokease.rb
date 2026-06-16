@@ -1,8 +1,12 @@
 class Tokease < Formula
-  desc "macOS menu bar app showing your Claude Code usage limits"
+  desc "macOS menu bar app showing your Claude Code rate limits (statusline, token-free)"
   homepage "https://github.com/tpatrouillat/tokease"
+  # NOTE: v1.0.0 is NOT tagged yet — it ships only after the user E2E test passes
+  # (cf. PLAN-TEST-E2E). The url/sha256 below are placeholders; until then, install
+  # from main with: brew install --HEAD tpatrouillat/tap/tokease
   url "https://github.com/tpatrouillat/tokease/archive/refs/tags/v1.0.0.tar.gz"
-  # Update after tagging v1.0.0: see ../bin/update-sha256.sh
+  # TODO: regenerate sha256 + tag v1.0.0 via ../bin/update-sha256.sh AFTER E2E validation
+  # (cf. PLAN-TEST-E2E). Do NOT publish a real sha256 / tag before the test passes.
   sha256 "0000000000000000000000000000000000000000000000000000000000000000"
   license "MIT"
   head "https://github.com/tpatrouillat/tokease.git", branch: "main"
