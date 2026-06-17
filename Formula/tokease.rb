@@ -12,12 +12,14 @@ class Tokease < Formula
   head "https://github.com/tpatrouillat/tokease.git", branch: "main"
 
   depends_on macos: :monterey
-  depends_on "python@3.13"
+  # 3.12 (pas 3.13) : roues rumps 0.4.0 / Pillow plus sûres ; le code cible py3.10+.
+  depends_on "python@3.12"
 
   def install
-    libexec.install Dir["*"]
+    # Liste blanche : ne pas embarquer tests/, docs/, venv/, graphify-out/…
+    libexec.install "tracker.py", "assets", "statusline"
     venv = libexec/"venv"
-    system Formula["python@3.13"].opt_bin/"python3.13", "-m", "venv", venv
+    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", venv
     system venv/"bin/pip", "install", "--quiet", "rumps==0.4.0", "Pillow>=10.0.0"
 
     (bin/"tokease").write <<~SH
