@@ -9,6 +9,10 @@ class Tokease < Formula
   # (cf. PLAN-TEST-E2E). Do NOT publish a real sha256 / tag before the test passes.
   sha256 "0000000000000000000000000000000000000000000000000000000000000000"
   license "MIT"
+  # SÉQUENCEMENT : --HEAD clone main de tokease. Tant que la PR #1
+  # (feat/statusline-source) n'est PAS mergée, main = code pré-pivot SANS le
+  # dossier statusline/ → l'install --HEAD échoue (liste blanche ci-dessous).
+  # Ordre obligatoire : merge PR #1 → test E2E via --HEAD → tag v1.0.0 + sha256.
   head "https://github.com/tpatrouillat/tokease.git", branch: "main"
 
   depends_on macos: :monterey
@@ -34,7 +38,20 @@ class Tokease < Formula
     keep_alive false
   end
 
+  def caveats
+    <<~EOS
+      Tokease lit ~/.tokease/usage.json, alimenté par le feed statusline de
+      Claude Code (>= 2.1.x). Pour câbler la capture (une seule fois) :
+        #{opt_libexec}/statusline/install-statusline.sh
+      Puis lance l'app :
+        brew services start tokease
+      La donnée n'apparaît qu'après la 1re réponse de Claude Code dans une session.
+    EOS
+  end
+
   test do
     assert_path_exists bin/"tokease"
+    assert_path_exists libexec/"tracker.py"
+    assert_path_exists libexec/"statusline/tokease-statusline.py"
   end
 end
