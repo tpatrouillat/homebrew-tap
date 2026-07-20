@@ -21,7 +21,9 @@ class Tokease < Formula
 
   def install
     # Allowlist: do not ship tests/, docs/, venv/, graphify-out/...
-    libexec.install "tracker.py", "assets", "statusline"
+    # uninstall.sh ships so brew users can clean ~/.tokease + statusline wiring
+    # (brew uninstall alone only removes the Cellar files).
+    libexec.install "tracker.py", "assets", "statusline", "uninstall.sh"
     venv = libexec/"venv"
     system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", venv
     system venv/"bin/pip", "install", "--quiet", "rumps==0.4.0", "Pillow>=10.0.0"
@@ -50,6 +52,9 @@ class Tokease < Formula
       statusline capture once with
         #{opt_libexec}/statusline/install-statusline.sh
       Statusline data appears after the first Claude reply in a session.
+
+      To remove everything later (data + statusline wiring, then the app):
+        bash #{opt_libexec}/uninstall.sh && brew uninstall tokease
     EOS
   end
 
