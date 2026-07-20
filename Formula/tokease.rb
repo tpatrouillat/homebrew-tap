@@ -1,5 +1,5 @@
 class Tokease < Formula
-  desc "macOS menu bar app showing your Claude Code rate limits (statusline, token-free)"
+  desc "macOS menu bar app showing your Claude 5-hour and weekly limits (token-free)"
   homepage "https://github.com/tpatrouillat/tokease"
   # NOTE: v1.0.0 is NOT tagged yet — it ships only after the user E2E test passes
   # (cf. PLAN-TEST-E2E). The url/sha256 below are placeholders; until then, install
@@ -9,18 +9,18 @@ class Tokease < Formula
   # (cf. PLAN-TEST-E2E). Do NOT publish a real sha256 / tag before the test passes.
   sha256 "0000000000000000000000000000000000000000000000000000000000000000"
   license "MIT"
-  # SÉQUENCEMENT : --HEAD clone main de tokease. Tant que la PR #1
-  # (feat/statusline-source) n'est PAS mergée, main = code pré-pivot SANS le
-  # dossier statusline/ → l'install --HEAD échoue (liste blanche ci-dessous).
-  # Ordre obligatoire : merge PR #1 → test E2E via --HEAD → tag v1.0.0 + sha256.
+  # SEQUENCING: --HEAD clones tokease's main. Until PR #1 (feat/statusline-source)
+  # is merged, main is the pre-pivot code WITHOUT the statusline/ folder, so the
+  # --HEAD install fails (allowlist below).
+  # Mandatory order: merge PR #1 -> E2E test via --HEAD -> tag v1.0.0 + sha256.
   head "https://github.com/tpatrouillat/tokease.git", branch: "main"
 
   depends_on macos: :monterey
-  # 3.12 (pas 3.13) : roues rumps 0.4.0 / Pillow plus sûres ; le code cible py3.10+.
+  # 3.12 (not 3.13): safer wheels for rumps 0.4.0 / Pillow; the code targets py3.10+.
   depends_on "python@3.12"
 
   def install
-    # Liste blanche : ne pas embarquer tests/, docs/, venv/, graphify-out/…
+    # Allowlist: do not ship tests/, docs/, venv/, graphify-out/...
     libexec.install "tracker.py", "assets", "statusline"
     venv = libexec/"venv"
     system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", venv
@@ -40,12 +40,16 @@ class Tokease < Formula
 
   def caveats
     <<~EOS
-      Tokease lit ~/.tokease/usage.json, alimenté par le feed statusline de
-      Claude Code (>= 2.1.x). Pour câbler la capture (une seule fois) :
-        #{opt_libexec}/statusline/install-statusline.sh
-      Puis lance l'app :
+      Start the app:
         brew services start tokease
-      La donnée n'apparaît qu'après la 1re réponse de Claude Code dans une session.
+
+      Zero config: if the Claude desktop app is running, Tokease auto-detects
+      the quota history it refreshes about every 5 minutes.
+
+      Optional, for reset countdowns: wire the Claude Code (>= 2.1.x)
+      statusline capture once with
+        #{opt_libexec}/statusline/install-statusline.sh
+      Statusline data appears after the first Claude reply in a session.
     EOS
   end
 

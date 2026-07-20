@@ -10,7 +10,7 @@ brew install tpatrouillat/tap/<formula-name>
 
 ### `tokease`
 
-macOS menu bar app showing your Claude Code rate limits in real time — two rings, 5-hour + weekly. Reads the `rate_limits` Claude Code publishes to its statusline; never reads your token. [Project repo →](https://github.com/tpatrouillat/tokease)
+macOS menu bar app showing your Claude 5-hour and weekly limits in real time, as two rings. Zero config with the Claude desktop app, optional Claude Code statusline capture for reset countdowns. Never reads your token. [Project repo →](https://github.com/tpatrouillat/tokease)
 
 ```bash
 brew install tpatrouillat/tap/tokease
