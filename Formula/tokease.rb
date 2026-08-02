@@ -1,5 +1,5 @@
 class Tokease < Formula
-  desc "macOS menu bar app showing your Claude 5-hour and weekly limits (token-free)"
+  desc "Menu bar app showing your Claude Pro/Max 5-hour and weekly limits (token-free)"
   homepage "https://github.com/tpatrouillat/tokease"
   url "https://github.com/tpatrouillat/tokease/archive/refs/tags/v1.0.0.tar.gz"
   sha256 "fdf17e4a2326d78f81cad832b6d9846f9471d80e3e4fbb5e9ff40c30ed50ac02"
@@ -16,7 +16,7 @@ class Tokease < Formula
     # (brew uninstall alone only removes the Cellar files).
     libexec.install "tracker.py", "assets", "statusline", "uninstall.sh"
     venv = libexec/"venv"
-    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", venv
+    system formula_opt_bin("python@3.12")/"python3.12", "-m", "venv", venv
     system venv/"bin/pip", "install", "--quiet", "rumps==0.4.0", "Pillow>=10.0.0"
 
     (bin/"tokease").write <<~SH
@@ -35,6 +35,9 @@ class Tokease < Formula
     <<~EOS
       Start the app:
         brew services start tokease
+
+      Requires a Claude Pro or Max plan: Free and Team/Enterprise accounts
+      expose no quota feeds, so Tokease has nothing to display there.
 
       Zero config: if the Claude desktop app is running, Tokease auto-detects
       the quota history it refreshes about every 5 minutes.
