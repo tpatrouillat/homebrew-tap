@@ -1,18 +1,9 @@
 class Tokease < Formula
   desc "macOS menu bar app showing your Claude 5-hour and weekly limits (token-free)"
   homepage "https://github.com/tpatrouillat/tokease"
-  # NOTE: v1.0.0 is NOT tagged yet — it ships only after the user E2E test passes
-  # (cf. PLAN-TEST-E2E). The url/sha256 below are placeholders; until then, install
-  # from main with: brew install --HEAD tpatrouillat/tap/tokease
   url "https://github.com/tpatrouillat/tokease/archive/refs/tags/v1.0.0.tar.gz"
-  # TODO: regenerate sha256 + tag v1.0.0 via ../bin/update-sha256.sh AFTER E2E validation
-  # (cf. PLAN-TEST-E2E). Do NOT publish a real sha256 / tag before the test passes.
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "fdf17e4a2326d78f81cad832b6d9846f9471d80e3e4fbb5e9ff40c30ed50ac02"
   license "MIT"
-  # SEQUENCING: --HEAD clones tokease's main. Until PR #1 (feat/statusline-source)
-  # is merged, main is the pre-pivot code WITHOUT the statusline/ folder, so the
-  # --HEAD install fails (allowlist below).
-  # Mandatory order: merge PR #1 -> E2E test via --HEAD -> tag v1.0.0 + sha256.
   head "https://github.com/tpatrouillat/tokease.git", branch: "main"
 
   depends_on macos: :monterey
