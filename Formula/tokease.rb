@@ -1,5 +1,5 @@
 class Tokease < Formula
-  desc "macOS menu bar app showing your Claude 5-hour and weekly limits (token-free)"
+  desc "Menu bar app showing your Claude Pro/Max 5-hour and weekly limits (token-free)"
   homepage "https://github.com/tpatrouillat/tokease"
   url "https://github.com/tpatrouillat/tokease/archive/refs/tags/v1.0.0.tar.gz"
   sha256 "fdf17e4a2326d78f81cad832b6d9846f9471d80e3e4fbb5e9ff40c30ed50ac02"
@@ -35,6 +35,9 @@ class Tokease < Formula
     <<~EOS
       Start the app:
         brew services start tokease
+
+      Requires a Claude Pro or Max plan: Free and Team/Enterprise accounts
+      expose no quota feeds, so Tokease has nothing to display there.
 
       Zero config: if the Claude desktop app is running, Tokease auto-detects
       the quota history it refreshes about every 5 minutes.
