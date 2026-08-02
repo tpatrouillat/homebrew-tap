@@ -16,7 +16,7 @@ class Tokease < Formula
     # (brew uninstall alone only removes the Cellar files).
     libexec.install "tracker.py", "assets", "statusline", "uninstall.sh"
     venv = libexec/"venv"
-    system Formula["python@3.12"].opt_bin/"python3.12", "-m", "venv", venv
+    system formula_opt_bin("python@3.12")/"python3.12", "-m", "venv", venv
     system venv/"bin/pip", "install", "--quiet", "rumps==0.4.0", "Pillow>=10.0.0"
 
     (bin/"tokease").write <<~SH
