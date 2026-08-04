@@ -1,8 +1,8 @@
 class Tokease < Formula
   desc "Menu bar app showing your Claude Pro/Max 5-hour and weekly limits (token-free)"
   homepage "https://github.com/tpatrouillat/tokease"
-  url "https://github.com/tpatrouillat/tokease/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "75d1fed8df4a366635b76c460880435bb7ddf62d71fec51d1a4229c783c36d1c"
+  url "https://github.com/tpatrouillat/tokease/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "084faeefcd48a03453edab2d66af7055ab0fa6214d9d4fa2954606d777f12eb8"
   license "MIT"
   head "https://github.com/tpatrouillat/tokease.git", branch: "main"
 
@@ -17,7 +17,7 @@ class Tokease < Formula
     libexec.install "tracker.py", "assets", "statusline", "uninstall.sh"
     venv = libexec/"venv"
     system formula_opt_bin("python@3.12")/"python3.12", "-m", "venv", venv
-    system venv/"bin/pip", "install", "--quiet", "rumps==0.4.0", "Pillow>=10.0.0"
+    system venv/"bin/pip", "install", "--quiet", "rumps==0.4.0", "Pillow==12.3.0"
 
     (bin/"tokease").write <<~SH
       #!/bin/bash
