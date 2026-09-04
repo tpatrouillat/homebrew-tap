@@ -29,8 +29,8 @@ brew install --HEAD tpatrouillat/tap/tokease
 When you tag a new release in `tokease`:
 
 ```bash
-./bin/update-sha256.sh tokease v1.0.3
-git commit -am "tokease: v1.0.3"
+./bin/update-sha256.sh tokease vX.Y.Z
+git commit -am "tokease: vX.Y.Z"
 git push
 ```
 
