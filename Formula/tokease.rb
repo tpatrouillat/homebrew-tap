@@ -40,7 +40,7 @@ class Tokease < Formula
       expose no quota feeds, so Tokease has nothing to display there.
 
       Zero config: if the Claude desktop app is running, Tokease auto-detects
-      the quota history it refreshes about every 5 minutes.
+      the quota history it refreshes every 5 to 15 minutes.
 
       Optional, for reset countdowns: wire the Claude Code (>= 2.1.x)
       statusline capture once with
