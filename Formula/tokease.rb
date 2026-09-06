@@ -1,8 +1,8 @@
 class Tokease < Formula
   desc "Menu bar app showing your Claude Pro/Max 5-hour and weekly limits (token-free)"
   homepage "https://github.com/tpatrouillat/tokease"
-  url "https://github.com/tpatrouillat/tokease/archive/refs/tags/v1.0.4.tar.gz"
-  sha256 "cac84e42f112988965da74ef85bb24802e3e479d812a099de8a54a434b98928e"
+  url "https://github.com/tpatrouillat/tokease/archive/refs/tags/v1.0.5.tar.gz"
+  sha256 "cd5659f36b31fc32d85d42979fd8400c24ceaf4ea355d7dcef0c90ae3f23ed46"
   license "MIT"
   head "https://github.com/tpatrouillat/tokease.git", branch: "main"
 
