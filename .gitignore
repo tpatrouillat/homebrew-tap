@@ -1,2 +1,7 @@
 .DS_Store
 *.swp
+
+# MCP partagés : symlink vers ~/ThibOS/.mcp.json, propre à cette machine
+.mcp.json
+.codex/
+.cursor/
